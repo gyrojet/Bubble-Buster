@@ -17,16 +17,19 @@ public class DebugChangeCard : MonoBehaviour
     {
         if (GUI.Button(new Rect(10, 10, 100, 28), "Hit me!"))
         {
-            cardModel.cardIndex = cardIndex;
-            cardModel.ToggelFace(true);
-
-            cardIndex++;
-
-            if (cardIndex == 52)
+            
+            if (cardIndex >= cardModel.faces.Length)
             {
                 cardIndex = 0;
                 cardModel.ToggelFace(false);
             }
+            else
+            {
+                cardModel.cardIndex = cardIndex;
+                cardModel.ToggelFace(true);
+            }
+            cardIndex++;
+
         }
     }
 
