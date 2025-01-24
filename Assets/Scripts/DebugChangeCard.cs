@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DebugChangeCard : MonoBehaviour
 {
-    CardModel cardModel;
+    Card cardModel;
     int cardIndex = 0;
 
     public GameObject card;
@@ -10,7 +10,7 @@ public class DebugChangeCard : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        cardModel = card.GetComponent<CardModel>();
+        cardModel = card.GetComponent<Card>();
     }
 
     private void OnGUI()

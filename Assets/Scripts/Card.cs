@@ -1,11 +1,19 @@
 using UnityEngine;
 
-public class CardModel : MonoBehaviour
+public class Card : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
 
     public Sprite[] faces;
     public Sprite cardBack;
+
+    [SerializeField] private int c_Rank;                                    // Card's value
+
+    [SerializeField] private CardSuit c_Suit;                               // Card's suit
+
+    public CardSuit Suit { get { return c_Suit; } }                         // Get Card Suit
+
+    public int Rank { get { return c_Rank; } }                              // Get Card Rank
 
     public int cardIndex; //e.g faces[cardIndex]
 
