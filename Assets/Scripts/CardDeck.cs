@@ -7,12 +7,16 @@ public class CardDeck : MonoBehaviour
 {
     [SerializeField] private List<Card> deckOfCards;
 
+    [SerializeField] private List<Card> copyOfDeck;
+
     [SerializeField] Player player;                                                         // The player and the Clambler
     [SerializeField] Player dealer;
 
 
     private void Start()
     {
+        RefreshDeck();
+
         DealCard(player);
         DealCard(player);
 
@@ -33,5 +37,10 @@ public class CardDeck : MonoBehaviour
         deckOfCards.Remove(dealtCard);
 
 
+    }
+
+    public void RefreshDeck()
+    {
+        deckOfCards = copyOfDeck;
     }
 }
