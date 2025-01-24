@@ -15,22 +15,22 @@ public class DebugChangeCard : MonoBehaviour
 
     private void OnGUI()
     {
-        if (GUI.Button(new Rect(10, 10, 100, 28), "Hit me!"))
-        {
+        //if (GUI.Button(new Rect(10, 10, 100, 28), "Hit me!"))
+        //{
             
-            if (cardIndex >= cardModel.faces.Length)
-            {
-                cardIndex = 0;
-                cardModel.ToggelFace(false);
-            }
-            else
-            {
-                cardModel.cardIndex = cardIndex;
-                cardModel.ToggelFace(true);
-            }
-            cardIndex++;
+        //    if (cardIndex >= cardModel.faces.Length)
+        //    {
+        //        cardIndex = 0;
+        //        cardModel.ToggelFace(false);
+        //    }
+        //    else
+        //    {
+        //        cardModel.cardIndex = cardIndex;
+        //        cardModel.ToggelFace(true);
+        //    }
+        //    cardIndex++;
 
-        }
+        //}
     }
 
 }
