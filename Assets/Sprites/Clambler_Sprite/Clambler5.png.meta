@@ -222,7 +222,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Clambler5_0: 8424988991124662078
+      Clambler5_1: -7766657083599559519
+      Clambler5_2: 4591130670896787261
+      Clambler5_3: -898507496865528515
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
