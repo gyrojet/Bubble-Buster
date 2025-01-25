@@ -25,6 +25,14 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] CardDeck deck;
 
+    AudioSource audioSource;
+
+    [SerializeField] AudioClip clip_DealCard;
+    [SerializeField] AudioClip clip_Lose;
+    [SerializeField] AudioClip clip_Win;
+    [SerializeField] AudioClip clip_SuperLose;
+    [SerializeField] AudioClip clip_SuperWin;
+
     bool isNewGame = false;
 
     //[SerializeField] bool playerBust;
@@ -184,7 +192,8 @@ public class UIManager : MonoBehaviour
 
         if (playerBust == true && dealerBust == true)                                            // Both Bust
         {
-            message = "It's an All Bust! Bets returned!";
+            message = "It's an All Bust!";
+            
         }
         else if (playerBust == true || (dealerBust == false && dealerValue > playerValue))       // Player busts; or, dealer has higher value
         {
