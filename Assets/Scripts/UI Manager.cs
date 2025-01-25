@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -10,16 +11,30 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI ui_PlayerScore;
     [SerializeField] TextMeshProUGUI ui_DealerScore;
+    [SerializeField] TextMeshProUGUI ui_Results;
+
+    [SerializeField] TextMeshProUGUI ui_PlayerHealth;
+    [SerializeField] TextMeshProUGUI ui_DealerHealth;
 
     [SerializeField] Button ui_PlayerHit;
-    [SerializeField] Button ui_Begin;
+    [SerializeField] Button ui_PlayerStay;
+    [SerializeField] GameObject ui_Begin;
+
+    [SerializeField] GameObject ui_WinScreen;
+    [SerializeField] GameObject ui_LoseScreen;
 
     [SerializeField] CardDeck deck;
 
+    bool isNewGame = false;
+
+    //[SerializeField] bool playerBust;
+    //[SerializeField] bool dealerBust;
+
     public void Start()
     {
-        ui_PlayerHit.enabled = false;
-        ui_Begin.enabled = true;
+        ui_PlayerHit.interactable = false;
+        ui_PlayerStay.interactable = false;
+        ui_Begin.SetActive(true);
     }
 
     public void SetScoreDisplay(int displayToTarget)
@@ -56,10 +71,48 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void SetHealthDisplay(int displayToTarget)
+    {
+        int health;
+
+        switch (displayToTarget)
+        {
+            case 0:
+                health = player.PlayerHealth;
+                ui_PlayerHealth.text = health.ToString();
+                break;
+            case 1:
+                health = dealer.PlayerHealth;
+                ui_DealerHealth.text = health.ToString();
+
+                break;
+            default:
+                Debug.Log("Error in SetHealthDisplay: Invalid switch case!");
+                break;
+
+
+        }
+    }
+
     public void StartRound()
     { 
-        ui_Begin.enabled = false;
-        ui_PlayerHit.enabled = true;
+
+        if (isNewGame)
+        {
+            if (ui_WinScreen.activeSelf == true) { ui_WinScreen.SetActive(false); }
+            if (ui_LoseScreen.activeSelf == true) { ui_LoseScreen.SetActive(false); }
+
+            player.ResetHealth();
+            dealer.ResetHealth();
+
+            isNewGame = false;
+        }
+
+        ui_Results.text = string.Empty;
+
+        ui_Begin.SetActive(false);
+        ui_PlayerHit.interactable = true;
+        ui_PlayerStay.interactable = true;
 
         player.ResetHand();
         dealer.ResetHand(); 
@@ -75,30 +128,103 @@ public class UIManager : MonoBehaviour
 
         if (player.IsPlayerBust)
         {
-            
             Debug.Log("Player has gone bust!");
 
-            DealDealerHand();
+            StartDealerTurn();
         }
     }
 
-    private void DealDealerHand()
+    public void StartDealerTurn()
     {
-        //ui_PlayerHit.enabled = false;
+        ui_PlayerHit.interactable = false;
+        ui_PlayerStay.interactable = false;
 
-        // remove later
-        Reset();
+        StartCoroutine(DealDealerHand());
     }
 
-    public void Reset()
+    private IEnumerator DealDealerHand()
     {
-        ui_Begin.enabled = true;
-        ui_PlayerHit.enabled = false;
+        while (dealer.PlayersHandValue < 17)
+        {
+            deck.DealCard(dealer);
 
-        player.ResetHand();
+            yield return new WaitForSeconds(0.75f);
+        }
+
+
+        EndRound();
+
+        ResetRound();
+    }
+
+    public void ResetRound()
+    {
+        ui_Begin.SetActive(true);
+        ui_PlayerHit.interactable = false;
+        ui_PlayerStay.interactable = false;
+
+        //player.ResetHand();
         //dealer.ResetHand();
 
-        deck.RefreshDeck();
+        //deck.RefreshDeck();
+    }
+
+    private void EndRound()
+    {
+        // Check to see if either player went bust;
+        // If neither player is bust, determine who has the higher hand
+
+        bool playerBust = player.IsPlayerBust;
+        bool dealerBust = dealer.IsPlayerBust;
+
+        int playerValue = player.PlayersHandValue;
+        int dealerValue = dealer.PlayersHandValue;
+
+        string message = "Default";
+
+        if (playerBust == true && dealerBust == true)                                            // Both Bust
+        {
+            message = "It's an All Bust! Bets returned!";
+        }
+        else if (playerBust == true || (dealerBust == false && dealerValue > playerValue))       // Player busts; or, dealer has higher value
+        {
+            message = "The Clambler wins!";
+            player.AdjustHealth((-1));
+        }
+        else if (dealerBust == true || playerValue > dealerValue)                        // Dealer busts; or, player has higher value
+        {
+            message = "You Win!";
+            dealer.AdjustHealth((-1));
+        }
+        else if (playerValue == dealerValue)
+        {
+            message = "It's a Push! Bets returned!";
+        }
+
+        ui_Results.text = message;
+
+        bool playerDead = player.IsPlayerDefeated;
+        bool dealerDead = dealer.IsPlayerDefeated;
+
+        Debug.Log(playerDead);
+        Debug.Log(dealerDead);
+
+        if (playerDead)
+        {
+            ResetRound();
+
+            ui_LoseScreen.SetActive(true);
+
+            isNewGame = true;
+        }
+        else if (dealerDead)
+        {
+            ResetRound();
+
+            ui_WinScreen.SetActive(true);
+
+            isNewGame = true;
+        }
     }
 
 

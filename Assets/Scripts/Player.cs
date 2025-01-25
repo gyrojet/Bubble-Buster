@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
 
 
     [SerializeField] private int p_HandValue = 0;                   // A player's hand value
-    [SerializeField] private int p_Money;                           // The player's money
+    [SerializeField] private int p_Health = 5;                           // The player's money
     //[SerializeField] private int p_HandCount
 
     [SerializeField] private Role p_Role;
@@ -29,7 +29,16 @@ public class Player : MonoBehaviour
 
     public int PlayersHandSize { get { return p_Hand.Count; } }
 
+    public int PlayerHealth { get { return p_Health; } }
+
+    public bool IsPlayerDefeated { get { return p_Health <= 0; } }
+
     public Role PlayerRole { get { return p_Role; } }
+
+    public void Start()
+    {
+        SetHealthDisplay();
+    }
 
     public void HitMe(Card card)
     {
@@ -90,6 +99,25 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void ResetHealth()
+    {
+        p_Health = 5;
 
+        SetHealthDisplay();
+    }
 
+    public void AdjustHealth(int numToAdjust)
+    {
+        p_Health += numToAdjust;
+
+        SetHealthDisplay();
+    }
+
+    public void SetHealthDisplay()
+    {
+        if (p_Role == Role.Player)
+            p_UIManager.SetHealthDisplay(0);
+        else if (p_Role == Role.Dealer)
+            p_UIManager.SetHealthDisplay(1);
+    }
 }
