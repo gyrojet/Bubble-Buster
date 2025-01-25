@@ -3,9 +3,11 @@ using UnityEngine.UI;
 
 public class CardBody : MonoBehaviour
 {
-    Image image;
+    public Image image;
 
     [SerializeField] private Sprite cardFace;
+
+
 
     private void Start()
     {
