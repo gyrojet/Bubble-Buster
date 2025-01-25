@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -12,14 +13,16 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI ui_DealerScore;
 
     [SerializeField] Button ui_PlayerHit;
+    [SerializeField] Button ui_PlayerStay;
     [SerializeField] Button ui_Begin;
 
     [SerializeField] CardDeck deck;
 
     public void Start()
     {
-        ui_PlayerHit.enabled = false;
-        ui_Begin.enabled = true;
+        ui_PlayerHit.interactable = false;
+        ui_PlayerStay.interactable = false;
+        ui_Begin.interactable = true;
     }
 
     public void SetScoreDisplay(int displayToTarget)
@@ -58,8 +61,9 @@ public class UIManager : MonoBehaviour
 
     public void StartRound()
     { 
-        ui_Begin.enabled = false;
-        ui_PlayerHit.enabled = true;
+        ui_Begin.interactable = false;
+        ui_PlayerHit.interactable = true;
+        ui_PlayerStay.interactable = true;
 
         player.ResetHand();
         dealer.ResetHand(); 
@@ -75,30 +79,52 @@ public class UIManager : MonoBehaviour
 
         if (player.IsPlayerBust)
         {
-            
             Debug.Log("Player has gone bust!");
 
-            DealDealerHand();
+            StartDealerTurn();
         }
     }
 
-    private void DealDealerHand()
+    public void StartDealerTurn()
     {
-        //ui_PlayerHit.enabled = false;
+        ui_PlayerHit.interactable = false;
+        ui_PlayerStay.interactable = false;
 
-        // remove later
+        StartCoroutine(DealDealerHand());
+    }
+
+    private IEnumerator DealDealerHand()
+    {
+        while (dealer.PlayersHandValue < 17)
+        {
+            deck.DealCard(dealer);
+            
+            yield return new WaitForSeconds(1);
+        }
+
+        EndRound();
+
         Reset();
     }
 
     public void Reset()
     {
-        ui_Begin.enabled = true;
-        ui_PlayerHit.enabled = false;
+        ui_Begin.interactable = true;
+        ui_PlayerHit.interactable = false;
+        ui_PlayerStay.interactable = false;
 
-        player.ResetHand();
+        //player.ResetHand();
         //dealer.ResetHand();
 
-        deck.RefreshDeck();
+        //deck.RefreshDeck();
+    }
+
+    private void EndRound()
+    {
+        
+
+        // Check to see if either player went bust;
+        // If neither player is bust, determine who has the higher hand
     }
 
 
