@@ -11,18 +11,22 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI ui_PlayerScore;
     [SerializeField] TextMeshProUGUI ui_DealerScore;
+    [SerializeField] TextMeshProUGUI ui_Results;
 
     [SerializeField] Button ui_PlayerHit;
     [SerializeField] Button ui_PlayerStay;
-    [SerializeField] Button ui_Begin;
+    [SerializeField] GameObject ui_Begin;
 
     [SerializeField] CardDeck deck;
+
+    //[SerializeField] bool playerBust;
+    //[SerializeField] bool dealerBust;
 
     public void Start()
     {
         ui_PlayerHit.interactable = false;
         ui_PlayerStay.interactable = false;
-        ui_Begin.interactable = true;
+        ui_Begin.SetActive(true);
     }
 
     public void SetScoreDisplay(int displayToTarget)
@@ -61,7 +65,9 @@ public class UIManager : MonoBehaviour
 
     public void StartRound()
     { 
-        ui_Begin.interactable = false;
+        ui_Results.text = string.Empty;
+
+        ui_Begin.SetActive(false);
         ui_PlayerHit.interactable = true;
         ui_PlayerStay.interactable = true;
 
@@ -98,18 +104,19 @@ public class UIManager : MonoBehaviour
         while (dealer.PlayersHandValue < 17)
         {
             deck.DealCard(dealer);
-            
-            yield return new WaitForSeconds(1);
+
+            yield return new WaitForSeconds(0.75f);
         }
+
 
         EndRound();
 
-        Reset();
+        ResetRound();
     }
 
-    public void Reset()
+    public void ResetRound()
     {
-        ui_Begin.interactable = true;
+        ui_Begin.SetActive(true);
         ui_PlayerHit.interactable = false;
         ui_PlayerStay.interactable = false;
 
@@ -121,10 +128,36 @@ public class UIManager : MonoBehaviour
 
     private void EndRound()
     {
-        
-
         // Check to see if either player went bust;
         // If neither player is bust, determine who has the higher hand
+
+        bool playerBust = player.IsPlayerBust;
+        bool dealerBust = dealer.IsPlayerBust;
+
+        int playerValue = player.PlayersHandValue;
+        int dealerValue = dealer.PlayersHandValue;
+
+        string message = "Default";
+
+        if (playerBust == true && dealerBust == true)                                            // Both Bust
+        {
+            message = "It's an All Bust! Bets returned!";
+        }
+        else if (playerBust == true || (dealerBust == false && dealerValue > playerValue))       // Player busts; or, dealer has higher value
+        {
+            message = "The Clambler wins!";
+        }
+        else if (dealerBust == true || playerValue > dealerValue)                        // Dealer busts; or, player has higher value
+        {
+            message = "You Win!";
+        }
+        else if (playerValue == dealerValue)
+        {
+            message = "It's a Push! Bets returned!";
+        }
+
+        ui_Results.text = message;
+
     }
 
 
