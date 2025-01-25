@@ -8,7 +8,9 @@ public class CardDeck : MonoBehaviour
 {
     [SerializeField] private List<Card> deckOfCards;
 
-    [SerializeField] private List<Card> copyOfDeck;
+    [SerializeField] private List<Card> backupDeck;
+
+    [SerializeField] private int maxHandSize = 11;
 
     [SerializeField] Player player;                                                         // The player and the Clambler
     [SerializeField] Player dealer;
@@ -32,7 +34,7 @@ public class CardDeck : MonoBehaviour
 
     public void DealCard(Player recipiant)
     {
-        if (recipiant.PlayersHandSize >= 5)
+        if (recipiant.PlayersHandSize >= maxHandSize)
         {
             Debug.Log("MAXIMUM OF 5 CARDS IN HAND");
         } 
@@ -55,11 +57,12 @@ public class CardDeck : MonoBehaviour
 
     private void CreateCopyOfDeck()
     {
-        copyOfDeck = deckOfCards;
+        backupDeck = new List<Card>(deckOfCards);
     }
 
     public void RefreshDeck()
     {
-        deckOfCards = copyOfDeck;
+        Debug.Log("DeckRefresh");
+        deckOfCards = new List<Card>(backupDeck);
     }
 }
