@@ -14,43 +14,43 @@ public class CardDeck : MonoBehaviour
     [SerializeField] Player dealer;
 
 
-    private IEnumerator Start()
+    private void Start()
     {
         CreateCopyOfDeck();
+        
+    }
 
+    public void DealFirstHand()
+    {
+
+
+        DealCard(player);       // Deals two cards to player, one card to dealer
         DealCard(player);
 
-        yield return new WaitForSeconds(1);
-
-        DealCard(player);
-
-        yield return new WaitForSeconds(1);
-
         DealCard(dealer);
-
-        yield return new WaitForSeconds(1);
-
-        DealCard(dealer);
-
-        yield return new WaitForSeconds(1);
-
-        //player.SetCardFaces();
-        //dealer.SetCardFaces();
     }
 
     public void DealCard(Player recipiant)
     {
-        int rand = Random.Range(0, deckOfCards.Count);
+        if (recipiant.PlayersHandSize >= 5)
+        {
+            Debug.Log("MAXIMUM OF 5 CARDS IN HAND");
+        } 
+        else
+        {
+            int rand = Random.Range(0, deckOfCards.Count);
 
-        Card dealtCard = deckOfCards[rand];
+            Card dealtCard = deckOfCards[rand];
 
-        recipiant.HitMe(dealtCard);
+            recipiant.HitMe(dealtCard);
 
-        Debug.Log($"Dealing {dealtCard.CardRankType} of {dealtCard.CardSuit}s to {recipiant}");
+            Debug.Log($"Dealing {dealtCard.CardRankType} of {dealtCard.CardSuit}s to {recipiant}");
 
-        deckOfCards.Remove(dealtCard);
+            deckOfCards.Remove(dealtCard);
 
-        recipiant.SetCardFaces();
+            recipiant.SetCardFaces();
+        }
+        
     }
 
     private void CreateCopyOfDeck()
