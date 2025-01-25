@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
 
     [SerializeField] private int p_HandValue = 0;                   // A player's hand value
     [SerializeField] private int p_Money;                           // The player's money
-    
     //[SerializeField] private int p_HandCount
 
     [SerializeField] private Role p_Role;
@@ -23,8 +22,6 @@ public class Player : MonoBehaviour
     [SerializeField] private List<CardBody> p_CardDisplay;
 
     [SerializeField] UIManager p_UIManager;
-
-    public bool IsPlayerBust { get { return p_HandValue > 21;  } }
 
     public int PlayersHandValue { get { return p_HandValue; } }
 
@@ -49,11 +46,6 @@ public class Player : MonoBehaviour
                 p_UIManager.SetScoreDisplay(1);
         }
        
-    }
-
-    public void AdjustMoney(int money)
-    {
-        p_Money += money;
     }
 
     private void AddScoreToHand(Card card)

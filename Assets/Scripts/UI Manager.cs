@@ -48,29 +48,16 @@ public class UIManager : MonoBehaviour
 
 
         }
-    } 
+    }
 
     public void StartRound()
-    {
-        ui_Begin.enabled = false;
-
+    { 
         player.ResetHand();
         dealer.ResetHand(); 
 
         deck.RefreshDeck();
 
         deck.DealFirstHand();
-    }
-
-    public void DealPlayerCard()
-    {
-        deck.DealCard(player);
-
-        if (player.IsPlayerBust)
-        {
-            ui_PlayerHit.enabled = false;
-            Debug.Log("player has gone bust!");
-        }
     }
 
 
