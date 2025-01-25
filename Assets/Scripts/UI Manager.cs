@@ -13,6 +13,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI ui_DealerScore;
     [SerializeField] TextMeshProUGUI ui_Results;
 
+    [SerializeField] TextMeshProUGUI ui_PlayerHealth;
+    [SerializeField] TextMeshProUGUI ui_DealerHealth;
+
     [SerializeField] Button ui_PlayerHit;
     [SerializeField] Button ui_PlayerStay;
     [SerializeField] GameObject ui_Begin;
@@ -63,8 +66,33 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void SetHealthDisplay(int displayToTarget)
+    {
+        int health;
+
+        switch (displayToTarget)
+        {
+            case 0:
+                health = player.PlayerHealth;
+                ui_PlayerHealth.text = health.ToString();
+                break;
+            case 1:
+                health = dealer.PlayerHealth;
+                ui_DealerHealth.text = health.ToString();
+
+                break;
+            default:
+                Debug.Log("Error in SetHealthDisplay: Invalid switch case!");
+                break;
+
+
+        }
+    }
+
     public void StartRound()
     { 
+
+
         ui_Results.text = string.Empty;
 
         ui_Begin.SetActive(false);
@@ -146,10 +174,12 @@ public class UIManager : MonoBehaviour
         else if (playerBust == true || (dealerBust == false && dealerValue > playerValue))       // Player busts; or, dealer has higher value
         {
             message = "The Clambler wins!";
+            player.AdjustHealth((-1));
         }
         else if (dealerBust == true || playerValue > dealerValue)                        // Dealer busts; or, player has higher value
         {
             message = "You Win!";
+            dealer.AdjustHealth((-1));
         }
         else if (playerValue == dealerValue)
         {
@@ -158,6 +188,13 @@ public class UIManager : MonoBehaviour
 
         ui_Results.text = message;
 
+        bool playerDead = player.IsPlayerDefeated;
+        bool dealerDead = dealer.IsPlayerDefeated;
+
+        if (playerDead)
+            Debug.Log("Player is defeated!");
+        else if (dealerDead)
+            Debug.Log("Dealer is defeated!");
     }
 
 
