@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private int p_HandValue = 0;                   // A player's hand value
     [SerializeField] private int p_Money;                           // The player's money
+    //[SerializeField] private int p_HandCount
 
     [SerializeField] private Role p_Role;
 
@@ -24,17 +25,27 @@ public class Player : MonoBehaviour
 
     public int PlayersHandValue { get { return p_HandValue; } }
 
+    public int PlayersHandSize { get { return p_Hand.Count; } }
+
     public Role PlayerRole { get { return p_Role; } }
 
     public void HitMe(Card card)
     {
-        p_Hand.Add(card);                                           // Add card to hand
-        AddScoreToHand(card);                                       // Add card's score to total
+        if (p_Hand.Count >= 5) 
+        {
+            Debug.Log("MAXIMUM OF 5 CARDS");
+        }
+        else
+        {
+            p_Hand.Add(card);                                           // Add card to hand
+            AddScoreToHand(card);                                       // Add card's score to total
 
-        if (p_Role == Role.Player)                                  // Sets score display for Player/Dealer
-            p_UIManager.SetScoreDisplay(0);
-        else if (p_Role == Role.Dealer)
-            p_UIManager.SetScoreDisplay(1);
+            if (p_Role == Role.Player)                                  // Sets score display for Player/Dealer
+                p_UIManager.SetScoreDisplay(0);
+            else if (p_Role == Role.Dealer)
+                p_UIManager.SetScoreDisplay(1);
+        }
+       
     }
 
     private void AddScoreToHand(Card card)

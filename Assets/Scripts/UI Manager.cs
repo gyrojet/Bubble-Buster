@@ -12,6 +12,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI ui_DealerScore;
 
     [SerializeField] Button ui_PlayerHit;
+    [SerializeField] Button ui_Begin;
+
+    [SerializeField] CardDeck deck;
 
     public void SetScoreDisplay(int displayToTarget)
     {
@@ -46,6 +49,18 @@ public class UIManager : MonoBehaviour
 
         }
     }
+
+    public void StartRound()
+    { 
+        player.ResetHand();
+        dealer.ResetHand(); 
+
+        deck.RefreshDeck();
+
+        deck.DealFirstHand();
+    }
+
+
 
     
     
