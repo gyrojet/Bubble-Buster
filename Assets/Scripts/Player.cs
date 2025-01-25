@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private List<Card> p_Hand;
 
+    [SerializeField] private List<CardBody> p_CardDisplay;
+
     [SerializeField] UIManager p_UIManager;
 
     public int PlayersHandValue { get { return p_HandValue; } }
@@ -52,8 +54,21 @@ public class Player : MonoBehaviour
         {
             p_HandValue += card.Rank;
         }
+    }
 
+    public void SetCardFaces()
+    {
+        for (int i = 0; i < p_Hand.Count; i++)
+        {
+            p_CardDisplay[i].SetFace(p_Hand[i].Face);
+        }
+    }
 
+    public void ResetHand()
+    {
+        p_HandValue = 0;
+
+        p_Hand.Clear();
     }
 
 

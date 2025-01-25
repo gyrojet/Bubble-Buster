@@ -27,7 +27,7 @@ public class Card : MonoBehaviour
         Two
     }
 
-    SpriteRenderer spriteRenderer;
+    //SpriteRenderer spriteRenderer;
 
     public Sprite face;
     public Sprite cardBack;
@@ -48,11 +48,13 @@ public class Card : MonoBehaviour
 
     public bool IsAnAce { get { return c_isAnAce;  } }
 
-    public void FlipCard()
-    {
-        if (spriteRenderer.sprite == face)
-            spriteRenderer.sprite = cardBack;
-        else if (spriteRenderer.sprite == cardBack)
-            spriteRenderer.sprite = face;
-    }
+    public Sprite Face { get { return face; } } 
+
+    //public void FlipCard()
+    //{
+    //    if (spriteRenderer.sprite == face)
+    //        spriteRenderer.sprite = cardBack;
+    //    else if (spriteRenderer.sprite == cardBack)
+    //        spriteRenderer.sprite = face;
+    //}
 }
