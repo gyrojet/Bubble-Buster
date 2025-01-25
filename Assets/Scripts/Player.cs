@@ -4,15 +4,35 @@ using System.Collections.Generic;
 
 public class Player : MonoBehaviour
 {
+    public enum Role
+    {
+        Player,
+        Dealer
+    }
+
+
     [SerializeField] private int p_HandValue = 0;                   // A player's hand value
     [SerializeField] private int p_Money;                           // The player's money
 
+    [SerializeField] private Role p_Role;
+
     [SerializeField] private List<Card> p_Hand;
+
+    [SerializeField] UIManager p_UIManager;
+
+    public int PlayersHandValue { get { return p_HandValue; } }
+
+    public Role PlayerRole { get { return p_Role; } }
 
     public void HitMe(Card card)
     {
         p_Hand.Add(card);                                           // Add card to hand
         AddScoreToHand(card);                                       // Add card's score to total
+
+        if (p_Role == Role.Player)                                  // Sets score display for Player/Dealer
+            p_UIManager.SetScoreDisplay(0);
+        else if (p_Role == Role.Dealer)
+            p_UIManager.SetScoreDisplay(1);
     }
 
     private void AddScoreToHand(Card card)
@@ -32,6 +52,8 @@ public class Player : MonoBehaviour
         {
             p_HandValue += card.Rank;
         }
+
+
     }
 
 

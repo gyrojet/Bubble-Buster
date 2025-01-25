@@ -15,7 +15,7 @@ public class CardDeck : MonoBehaviour
 
     private void Start()
     {
-        RefreshDeck();
+        copyOfDeck = deckOfCards;
 
         DealCard(player);
         DealCard(player);
