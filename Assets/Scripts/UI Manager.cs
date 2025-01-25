@@ -16,6 +16,12 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] CardDeck deck;
 
+    public void Start()
+    {
+        ui_PlayerHit.enabled = false;
+        ui_Begin.enabled = true;
+    }
+
     public void SetScoreDisplay(int displayToTarget)
     {
         int handScore;
@@ -52,6 +58,9 @@ public class UIManager : MonoBehaviour
 
     public void StartRound()
     { 
+        ui_Begin.enabled = false;
+        ui_PlayerHit.enabled = true;
+
         player.ResetHand();
         dealer.ResetHand(); 
 
@@ -60,8 +69,39 @@ public class UIManager : MonoBehaviour
         deck.DealFirstHand();
     }
 
+    public void DealPlayerCard()
+    {
+        deck.DealCard(player);
+
+        if (player.IsPlayerBust)
+        {
+            
+            Debug.Log("Player has gone bust!");
+
+            DealDealerHand();
+        }
+    }
+
+    private void DealDealerHand()
+    {
+        //ui_PlayerHit.enabled = false;
+
+        // remove later
+        Reset();
+    }
+
+    public void Reset()
+    {
+        ui_Begin.enabled = true;
+        ui_PlayerHit.enabled = false;
+
+        player.ResetHand();
+        //dealer.ResetHand();
+
+        deck.RefreshDeck();
+    }
 
 
-    
-    
+
+
 }

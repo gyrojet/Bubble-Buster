@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] UIManager p_UIManager;
 
+    public bool IsPlayerBust { get { return p_HandValue > 21;  } }
+
     public int PlayersHandValue { get { return p_HandValue; } }
 
     public int PlayersHandSize { get { return p_Hand.Count; } }
@@ -31,9 +33,9 @@ public class Player : MonoBehaviour
 
     public void HitMe(Card card)
     {
-        if (p_Hand.Count >= 5) 
+        if (p_Hand.Count >= 11) 
         {
-            Debug.Log("MAXIMUM OF 5 CARDS");
+            Debug.Log("MAXIMUM OF 11 CARDS");
         }
         else
         {
@@ -71,6 +73,7 @@ public class Player : MonoBehaviour
     {
         for (int i = 0; i < p_Hand.Count; i++)
         {
+            p_CardDisplay[i].image.enabled = true;
             p_CardDisplay[i].SetFace(p_Hand[i].Face);
         }
     }
@@ -80,6 +83,11 @@ public class Player : MonoBehaviour
         p_HandValue = 0;
 
         p_Hand.Clear();
+
+        foreach (CardBody cb in p_CardDisplay)
+        {
+            cb.image.enabled = false;
+        }
     }
 
 
