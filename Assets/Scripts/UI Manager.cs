@@ -20,7 +20,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] Button ui_PlayerStay;
     [SerializeField] GameObject ui_Begin;
 
+    [SerializeField] GameObject ui_WinScreen;
+    [SerializeField] GameObject ui_LoseScreen;
+
     [SerializeField] CardDeck deck;
+
+    bool isNewGame = false;
 
     //[SerializeField] bool playerBust;
     //[SerializeField] bool dealerBust;
@@ -92,6 +97,16 @@ public class UIManager : MonoBehaviour
     public void StartRound()
     { 
 
+        if (isNewGame)
+        {
+            if (ui_WinScreen.activeSelf == true) { ui_WinScreen.SetActive(false); }
+            if (ui_LoseScreen.activeSelf == true) { ui_LoseScreen.SetActive(false); }
+
+            player.ResetHealth();
+            dealer.ResetHealth();
+
+            isNewGame = false;
+        }
 
         ui_Results.text = string.Empty;
 
@@ -191,10 +206,25 @@ public class UIManager : MonoBehaviour
         bool playerDead = player.IsPlayerDefeated;
         bool dealerDead = dealer.IsPlayerDefeated;
 
+        Debug.Log(playerDead);
+        Debug.Log(dealerDead);
+
         if (playerDead)
-            Debug.Log("Player is defeated!");
+        {
+            ResetRound();
+
+            ui_LoseScreen.SetActive(true);
+
+            isNewGame = true;
+        }
         else if (dealerDead)
-            Debug.Log("Dealer is defeated!");
+        {
+            ResetRound();
+
+            ui_WinScreen.SetActive(true);
+
+            isNewGame = true;
+        }
     }
 
 
