@@ -178,7 +178,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'The Clambler is history!
 
-    Press Begin Round to start again!'
+    Press Start to play again!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d37870d29e273654786df4261e592ebd, type: 2}
   m_sharedMaterial: {fileID: -6999447031105919101, guid: d37870d29e273654786df4261e592ebd, type: 2}
@@ -316,7 +316,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'You''re History!
 
-    Press Begin Round to start again!'
+    Press Start to play again!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d37870d29e273654786df4261e592ebd, type: 2}
   m_sharedMaterial: {fileID: -6999447031105919101, guid: d37870d29e273654786df4261e592ebd, type: 2}
