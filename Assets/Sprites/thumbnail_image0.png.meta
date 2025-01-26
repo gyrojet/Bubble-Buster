@@ -144,11 +144,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 89
-        y: 592
+        y: 594
         width: 373
         height: 310
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -165,12 +165,12 @@ TextureImporter:
       name: thumbnail_image0_1
       rect:
         serializedVersion: 2
-        x: 544
+        x: 516
         y: 584
-        width: 380
+        width: 408
         height: 317
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -187,12 +187,12 @@ TextureImporter:
       name: thumbnail_image0_3
       rect:
         serializedVersion: 2
-        x: 1002
-        y: 592
-        width: 378
+        x: 961
+        y: 598
+        width: 435
         height: 328
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -209,12 +209,12 @@ TextureImporter:
       name: thumbnail_image0_8
       rect:
         serializedVersion: 2
-        x: 69
+        x: 32
         y: 90
-        width: 390
+        width: 427
         height: 358
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -235,8 +235,8 @@ TextureImporter:
         y: 83
         width: 416
         height: 408
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.4711917, y: 0.44125375}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -245,116 +245,6 @@ TextureImporter:
       bones: []
       spriteID: 3f615c2d093019570800000000000000
       internalID: 8471556294606919411
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: thumbnail_image0_2
-      rect:
-        serializedVersion: 2
-        x: 977
-        y: 857
-        width: 26
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 93c504547db7b2944ba1bd17255c2379
-      internalID: -1649001394958780065
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: thumbnail_image0_4
-      rect:
-        serializedVersion: 2
-        x: 528
-        y: 808
-        width: 14
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3a56773ce6f85d440b539f281f105d0f
-      internalID: -1413722833343015312
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: thumbnail_image0_5
-      rect:
-        serializedVersion: 2
-        x: 991
-        y: 816
-        width: 10
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b95e031c3d657ea4ca77e7125da74223
-      internalID: 5313961657882415249
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: thumbnail_image0_6
-      rect:
-        serializedVersion: 2
-        x: 525
-        y: 788
-        width: 12
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d43e729bba60d9341b52381df8519254
-      internalID: 9107674354204284617
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: thumbnail_image0_7
-      rect:
-        serializedVersion: 2
-        x: 42
-        y: 394
-        width: 32
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 47c81b07b345e414c8d4c712f6dd9fa9
-      internalID: -2748263808099813222
       vertices: []
       indices: 
       edges: []
