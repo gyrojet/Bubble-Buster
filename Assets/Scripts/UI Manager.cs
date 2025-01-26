@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -19,6 +20,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Button ui_PlayerHit;
     [SerializeField] Button ui_PlayerStay;
     [SerializeField] Button ui_Begin;
+    [SerializeField] Button ui_Exit;
 
     [SerializeField] GameObject ui_WinScreen;
     [SerializeField] GameObject ui_LoseScreen;
@@ -48,6 +50,7 @@ public class UIManager : MonoBehaviour
         ui_PlayerHit.interactable = false;
         ui_PlayerStay.interactable = false;
         ui_Begin.interactable = true;
+        ui_Exit.interactable = true;
 
         audioSource = GetComponent<AudioSource>();
     }
@@ -189,6 +192,11 @@ public class UIManager : MonoBehaviour
         //dealer.ResetHand();
 
         //deck.RefreshDeck();
+    }
+
+    public void ExitGame()
+    {
+        SceneManager.LoadScene(0); //Exit game
     }
 
     private void EndRound()
