@@ -197,8 +197,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -24, y: 302}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 6.2267, y: 302}
+  m_SizeDelta: {x: 217.0562, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &283962335
 MonoBehaviour:
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Clamblers Casino
+  m_text: Clambler's Casino
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ebf97a0761536ab47b23cf3dcb3d678d, type: 2}
   m_sharedMaterial: {fileID: -1748773653747504964, guid: ebf97a0761536ab47b23cf3dcb3d678d, type: 2}
@@ -1467,14 +1467,14 @@ MonoBehaviour:
     Animation
 
 
-    Naomi -
+    Naomi Jensen - Art, Animation
 
 
-    Justus Nielsen - Additional Art
+    Justus Nielsen - Additional
+    Art
 
 
-    Ryan Mullin,
-    Jaydn Somers - Card Designs
+    Ryan Mullin, Jaydn Somers - Card Designs
 
 
     Tyler Law - Lead Programmer

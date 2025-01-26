@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      128x256OgenusWifeCard_0: -3404366463692711316
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

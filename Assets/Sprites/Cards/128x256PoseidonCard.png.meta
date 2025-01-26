@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      128x256PoseidonCard_0: -7512975152687034513
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

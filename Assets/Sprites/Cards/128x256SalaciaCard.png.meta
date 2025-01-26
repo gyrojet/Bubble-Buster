@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      128x256SalaciaCard_0: -2539938319055861964
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

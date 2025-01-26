@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      128x256Glaukos Card_0: 6181783066346722870
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

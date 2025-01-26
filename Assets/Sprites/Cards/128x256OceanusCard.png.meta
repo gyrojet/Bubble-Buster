@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      128x256OceanusCard_0: 1850645919488414054
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

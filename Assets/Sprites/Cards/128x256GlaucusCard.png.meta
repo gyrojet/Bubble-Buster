@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      128x256GlaucusCard_0: -6438155376726741512
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

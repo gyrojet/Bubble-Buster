@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      128x256TritonCard_0: -1963028693194814023
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      128x256RomanTritonCard_0: -7636764284708290765
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
