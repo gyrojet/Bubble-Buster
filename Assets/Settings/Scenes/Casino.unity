@@ -1333,7 +1333,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &285995016
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6988,15 +6988,15 @@ MonoBehaviour:
   ui_DealerHealth: {fileID: 1341324496}
   ui_PlayerHit: {fileID: 871453606}
   ui_PlayerStay: {fileID: 1298401577}
-  ui_Begin: {fileID: 1599768550}
+  ui_Begin: {fileID: 1599768552}
   ui_WinScreen: {fileID: 285995015}
   ui_LoseScreen: {fileID: 2052250698}
   deck: {fileID: 1526242545}
-  clip_DealCard: {fileID: 0}
-  clip_Lose: {fileID: 0}
-  clip_Win: {fileID: 0}
-  clip_SuperLose: {fileID: 0}
-  clip_SuperWin: {fileID: 0}
+  clip_DealCard: {fileID: 8300000, guid: 26e33df0ee38522469694f072683d577, type: 3}
+  clip_Lose: {fileID: 8300000, guid: fc5b81ba3d40a2a4d83bb4bc66087688, type: 3}
+  clip_Win: {fileID: 8300000, guid: c087bb9b334bc1c4db3a9d52ef456ba5, type: 3}
+  clip_SuperLose: {fileID: 8300000, guid: 9cebda76438fdcb438fd4ba8afb7aba6, type: 3}
+  clip_SuperWin: {fileID: 8300000, guid: e8f9744bf3ef1744a96293304959a344, type: 3}
 --- !u!82 &1305362865
 AudioSource:
   m_ObjectHideFlags: 0

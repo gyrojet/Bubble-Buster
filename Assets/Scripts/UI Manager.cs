@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] Button ui_PlayerHit;
     [SerializeField] Button ui_PlayerStay;
-    [SerializeField] GameObject ui_Begin;
+    [SerializeField] Button ui_Begin;
 
     [SerializeField] GameObject ui_WinScreen;
     [SerializeField] GameObject ui_LoseScreen;
@@ -33,7 +33,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] AudioClip clip_SuperLose;
     [SerializeField] AudioClip clip_SuperWin;
 
-    bool isNewGame = false;
+    bool isNewGame = true;
 
     //[SerializeField] bool playerBust;
     //[SerializeField] bool dealerBust;
@@ -42,7 +42,9 @@ public class UIManager : MonoBehaviour
     {
         ui_PlayerHit.interactable = false;
         ui_PlayerStay.interactable = false;
-        ui_Begin.SetActive(true);
+        ui_Begin.interactable = true;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void SetScoreDisplay(int displayToTarget)
@@ -103,7 +105,8 @@ public class UIManager : MonoBehaviour
     }
 
     public void StartRound()
-    { 
+    {
+        audioSource.PlayOneShot(clip_Win);
 
         if (isNewGame)
         {
@@ -118,7 +121,7 @@ public class UIManager : MonoBehaviour
 
         ui_Results.text = string.Empty;
 
-        ui_Begin.SetActive(false);
+        ui_Begin.interactable = false;
         ui_PlayerHit.interactable = true;
         ui_PlayerStay.interactable = true;
 
@@ -133,6 +136,8 @@ public class UIManager : MonoBehaviour
     public void DealPlayerCard()
     {
         deck.DealCard(player);
+
+        audioSource.PlayOneShot(clip_DealCard);
 
         if (player.IsPlayerBust)
         {
@@ -156,6 +161,8 @@ public class UIManager : MonoBehaviour
         {
             deck.DealCard(dealer);
 
+            audioSource.PlayOneShot(clip_DealCard);
+
             yield return new WaitForSeconds(0.75f);
         }
 
@@ -167,7 +174,7 @@ public class UIManager : MonoBehaviour
 
     public void ResetRound()
     {
-        ui_Begin.SetActive(true);
+        ui_Begin.interactable = true;
         ui_PlayerHit.interactable = false;
         ui_PlayerStay.interactable = false;
 
@@ -192,22 +199,31 @@ public class UIManager : MonoBehaviour
 
         if (playerBust == true && dealerBust == true)                                            // Both Bust
         {
-            message = "It's an All Bust!";
-            
+            message = "It's an All Bust! Tie!";
+            audioSource.PlayOneShot(clip_Lose);
+
         }
         else if (playerBust == true || (dealerBust == false && dealerValue > playerValue))       // Player busts; or, dealer has higher value
         {
             message = "The Clambler wins!";
+
+            audioSource.PlayOneShot(clip_Lose);
+
             player.AdjustHealth((-1));
         }
         else if (dealerBust == true || playerValue > dealerValue)                        // Dealer busts; or, player has higher value
         {
             message = "You Win!";
+
+            audioSource.PlayOneShot(clip_Win);
+
             dealer.AdjustHealth((-1));
         }
         else if (playerValue == dealerValue)
         {
-            message = "It's a Push! Bets returned!";
+            message = "It's a Push! Tie!";
+
+            audioSource.PlayOneShot(clip_Lose);
         }
 
         ui_Results.text = message;
@@ -224,6 +240,8 @@ public class UIManager : MonoBehaviour
 
             ui_LoseScreen.SetActive(true);
 
+            audioSource.PlayOneShot(clip_SuperLose);
+
             isNewGame = true;
         }
         else if (dealerDead)
@@ -231,6 +249,8 @@ public class UIManager : MonoBehaviour
             ResetRound();
 
             ui_WinScreen.SetActive(true);
+
+            audioSource.PlayOneShot(clip_SuperWin);
 
             isNewGame = true;
         }
