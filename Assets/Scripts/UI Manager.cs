@@ -23,6 +23,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject ui_WinScreen;
     [SerializeField] GameObject ui_LoseScreen;
 
+    [SerializeField] Image ui_PlayersHand;
+    [SerializeField] Image ui_PlayersThumb;
+
     [SerializeField] CardDeck deck;
 
     AudioSource audioSource;
@@ -40,6 +43,8 @@ public class UIManager : MonoBehaviour
 
     public void Start()
     {
+        TogglePlayersHand(false);
+
         ui_PlayerHit.interactable = false;
         ui_PlayerStay.interactable = false;
         ui_Begin.interactable = true;
@@ -112,6 +117,8 @@ public class UIManager : MonoBehaviour
         {
             if (ui_WinScreen.activeSelf == true) { ui_WinScreen.SetActive(false); }
             if (ui_LoseScreen.activeSelf == true) { ui_LoseScreen.SetActive(false); }
+
+           TogglePlayersHand(true);
 
             player.ResetHealth();
             dealer.ResetHealth();
@@ -231,12 +238,11 @@ public class UIManager : MonoBehaviour
         bool playerDead = player.IsPlayerDefeated;
         bool dealerDead = dealer.IsPlayerDefeated;
 
-        Debug.Log(playerDead);
-        Debug.Log(dealerDead);
-
         if (playerDead)
         {
             ResetRound();
+
+            TogglePlayersHand(false);
 
             ui_LoseScreen.SetActive(true);
 
@@ -248,12 +254,20 @@ public class UIManager : MonoBehaviour
         {
             ResetRound();
 
+            TogglePlayersHand(false);
+
             ui_WinScreen.SetActive(true);
 
             audioSource.PlayOneShot(clip_SuperWin);
 
             isNewGame = true;
         }
+    }
+
+    private void TogglePlayersHand(bool toggle) 
+    {
+        ui_PlayersHand.enabled = toggle;
+        ui_PlayersThumb.enabled = toggle;
     }
 
 

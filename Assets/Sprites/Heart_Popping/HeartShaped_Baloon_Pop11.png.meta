@@ -120,6 +120,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -334,7 +347,16 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      HeartShaped_Baloon_Pop11_0: 5711975849452589958
+      HeartShaped_Baloon_Pop11_1: 7806387578214035343
+      HeartShaped_Baloon_Pop11_2: -1824332697505608524
+      HeartShaped_Baloon_Pop11_3: 562435673875380151
+      HeartShaped_Baloon_Pop11_4: -4050726909296762522
+      HeartShaped_Baloon_Pop11_5: -5282427901161515152
+      HeartShaped_Baloon_Pop11_6: 88038444544865928
+      HeartShaped_Baloon_Pop11_7: 7415817806071989640
+      HeartShaped_Baloon_Pop11_8: 2415429736847404613
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
