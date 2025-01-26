@@ -7740,6 +7740,7 @@ MonoBehaviour:
   clip_Win: {fileID: 8300000, guid: c087bb9b334bc1c4db3a9d52ef456ba5, type: 3}
   clip_SuperLose: {fileID: 8300000, guid: 9cebda76438fdcb438fd4ba8afb7aba6, type: 3}
   clip_SuperWin: {fileID: 8300000, guid: e8f9744bf3ef1744a96293304959a344, type: 3}
+  clip_DealHand: {fileID: 8300000, guid: f11f58a08b1348049a962db06f29337b, type: 3}
 --- !u!82 &1305362865
 AudioSource:
   m_ObjectHideFlags: 0
