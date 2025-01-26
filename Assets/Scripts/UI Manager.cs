@@ -37,6 +37,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] AudioClip clip_Win;
     [SerializeField] AudioClip clip_SuperLose;
     [SerializeField] AudioClip clip_SuperWin;
+    [SerializeField] AudioClip clip_DealHand;
 
     bool isNewGame = true;
 
@@ -114,7 +115,7 @@ public class UIManager : MonoBehaviour
 
     public void StartRound()
     {
-        audioSource.PlayOneShot(clip_Win);
+        audioSource.PlayOneShot(clip_DealHand);
 
         if (isNewGame)
         {
